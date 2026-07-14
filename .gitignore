@@ -7,8 +7,8 @@ frontend/npm-debug.log*
 # Backend (Python)
 backend/__pycache__/
 backend/*.pyc
-backend/.venv/
-backend/venv/
+.venv/
+venv/
 backend/.env
 
 # OS / Editor

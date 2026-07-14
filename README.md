@@ -5,7 +5,11 @@
 - `backend/` — FastAPI service for pipeline parsing (DAG validation)
 
 ## Setup
-_TODO: fill in run instructions_
+## Backend setup
+python -m venv venv
+source venv/bin/activate      # or venv\Scripts\activate on Windows
+pip install -r backend/requirements.txt
+uvicorn backend.main:app --reload
 
 ## Notes
 _TODO: architectural decisions, trade-offs for walkthrough_
