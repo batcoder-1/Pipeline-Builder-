@@ -10,7 +10,11 @@ import { InputNode } from './nodes/inputNode';
 import { LLMNode } from './nodes/llmNode';
 import { OutputNode } from './nodes/outputNode';
 import { TextNode } from './nodes/textNode';
-
+import { ApiNode } from './nodes/apiNode';
+import { ParserNode } from './nodes/parserNode';
+import { ConditionNode } from './nodes/conditionNode';
+import { MergeNode } from './nodes/mergeNode';
+import { CommentNode } from './nodes/commentNode';
 import 'reactflow/dist/style.css';
 
 const gridSize = 20;
@@ -20,6 +24,11 @@ const nodeTypes = {
   llm: LLMNode,
   customOutput: OutputNode,
   text: TextNode,
+  api:ApiNode,
+  parser:ParserNode,
+  condition:ConditionNode,
+  merge:MergeNode,
+  comment:CommentNode
 };
 
 const selector = (state) => ({
