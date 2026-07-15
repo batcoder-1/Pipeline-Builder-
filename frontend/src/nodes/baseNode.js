@@ -1,8 +1,8 @@
         import { Handle,Position } from "reactflow"
         
-        export const BaseNode = ({ id, title, handles, children }) => {
+        export const BaseNode = ({ id, title, handles, children, style }) => {
             return(
-            <div style={{width: 200, height: 80, border: '1px solid black'}}>
+            <div style={{width: 200, minHeight: 80, border: '1px solid black', ...style}}>
                 <div>
                     <span>{title}</span>
                 </div>
