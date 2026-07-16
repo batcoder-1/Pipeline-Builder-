@@ -5,6 +5,7 @@ return(
 <BaseNode
 id={id}
 title={"Merge"}
+category="processing"
 handles={
     [
         {

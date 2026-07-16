@@ -15,6 +15,7 @@ export const ApiNode=({id,data})=>{
     <BaseNode
     id={id}
     title={"API"}
+    category="processing"
     handles={
     [
         {

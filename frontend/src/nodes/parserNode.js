@@ -11,6 +11,7 @@ return (
     <BaseNode
     id={id}
     title={"Parser"}
+    category="processing"
     handles={
         [
             {

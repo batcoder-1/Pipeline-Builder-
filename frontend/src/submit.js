@@ -26,7 +26,7 @@ alert(`
 }
     return (
         <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
-            <button type="button" onClick={handleSubmit}>Submit</button>
+            <button type="button" className="pipeline-submit-btn" onClick={handleSubmit}>Submit</button>
         </div>
     );
 }

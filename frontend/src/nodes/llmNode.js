@@ -8,6 +8,7 @@ export const LLMNode = ({ id, data }) => {
 <BaseNode
 id={id}
 title={"LLM"}
+category="processing"
 handles={
 [
 {

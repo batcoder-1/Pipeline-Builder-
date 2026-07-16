@@ -9,6 +9,7 @@ return(
     <BaseNode
     id={id}
     title="Comment"
+    category="annotation"
     handles={[]}
     >
         <div>

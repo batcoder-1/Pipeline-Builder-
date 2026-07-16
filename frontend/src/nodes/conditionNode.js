@@ -6,6 +6,7 @@ return(
 <BaseNode
 id={id}
 title={"Condition"}
+category="control"
 handles={
 [
 {

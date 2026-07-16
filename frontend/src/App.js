@@ -4,7 +4,7 @@ import { SubmitButton } from './submit';
 
 function App() {
   return (
-    <div>
+    <div style={{ background: '#0f1117', minHeight: '100vh' }}>
       <PipelineToolbar />
       <PipelineUI />
       <SubmitButton />

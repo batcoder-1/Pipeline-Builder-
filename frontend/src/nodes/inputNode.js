@@ -16,7 +16,7 @@ export const InputNode = ({ id, data }) => {
   };
 
   return (
-    <BaseNode id={id} title={"Input"} handles={[{type:"source",position:Position.Right,id_suffix:"value"}]}>
+    <BaseNode id={id} title={"Input"} category="input" handles={[{type:"source",position:Position.Right,id_suffix:"value"}]}>
       <div>
         <label>
           Name:

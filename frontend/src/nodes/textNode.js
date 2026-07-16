@@ -49,6 +49,7 @@ setVariableHandle(allHandles)
     <BaseNode
     id={id}
     title={"Text"}
+    category="annotation"
     handles={variableHandle}
     style={nodeSize}
     >

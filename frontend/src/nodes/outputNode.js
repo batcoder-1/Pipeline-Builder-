@@ -19,6 +19,7 @@ export const OutputNode = ({ id, data }) => {
     <BaseNode
     id={id}
     title={"Output"}
+    category="input"
     handles={[{type:"target",position:Position.Left,id_suffix:"value"}]}
     >
       <div>
