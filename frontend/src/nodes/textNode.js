@@ -7,7 +7,7 @@ export const TextNode = ({ id, data }) => {
   const [currText, setCurrText] = useState(data?.text || '{{input}}');
   const [nodeSize, setNodeSize] = useState({ width: 200, height: 80 });
   const textareaRef=useRef(null)
-
+  const [variableHandle,setVariableHandle]=useState([])
   const handleTextChange = (e) => {
     setCurrText(e.target.value);
   };
@@ -26,11 +26,30 @@ useEffect(() => {
     textareaRef.current.style.height = `${textareaRef.current.scrollHeight}px`;
   }
 }, [currText]);
+useEffect(()=>{
+const regex=/\{\{(\w+)\}\}/g
+const matches=[...currText.matchAll(regex)]
+const variables=new Set()
+for(const match of matches){
+  variables.add(match[1])
+}
+const variablesArray=[...variables]
+const newVarHandles=variablesArray.map(
+  v=>
+    ({
+      type:"target",
+      position:Position.Left,
+      id_suffix:v
+    })
+)
+const allHandles=[...newVarHandles,{type:"source",position:Position.Right,id_suffix:"output"}]
+setVariableHandle(allHandles)
+},[currText])
   return (
     <BaseNode
     id={id}
     title={"Text"}
-    handles={[{type:"source",position:Position.Right,id_suffix:"output"}]}
+    handles={variableHandle}
     style={nodeSize}
     >
       <div>
