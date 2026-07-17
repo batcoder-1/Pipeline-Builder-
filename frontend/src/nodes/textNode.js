@@ -28,7 +28,7 @@ useEffect(() => {
   }
 }, [currText]);
 useEffect(()=>{
-const regex=/\{\{(\w+)\}\}/g
+const regex = /\{\{\s*([A-Za-z_$][A-Za-z0-9_$]*)\s*\}\}/g
 const matches=[...currText.matchAll(regex)]
 const variables=new Set()
 for(const match of matches){
