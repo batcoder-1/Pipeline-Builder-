@@ -3,6 +3,7 @@
 import { useState,useRef,useEffect} from 'react';
 import {  Position } from 'reactflow';
 import { BaseNode } from './baseNode';
+import { useStore as useAppStore } from '../store';
 export const TextNode = ({ id, data }) => {
   const [currText, setCurrText] = useState(data?.text || '{{input}}');
   const [nodeSize, setNodeSize] = useState({ width: 200, height: 80 });
@@ -44,7 +45,9 @@ const newVarHandles=variablesArray.map(
 )
 const allHandles=[...newVarHandles,{type:"source",position:Position.Right,id_suffix:"output"}]
 setVariableHandle(allHandles)
-},[currText])
+const validHandles=allHandles.map(h=>`${id}-${h.id_suffix}`)
+useAppStore.getState().pruneEdges(id, validHandles)
+},[currText,id])
   return (
     <BaseNode
     id={id}

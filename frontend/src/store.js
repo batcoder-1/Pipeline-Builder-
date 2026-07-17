@@ -20,6 +20,15 @@ export const useStore = create((set, get) => ({
         set({nodeIDs: newIDs});
         return `${type}-${newIDs[type]}`;
     },
+    pruneEdges:(nodeId,validHandles)=>{
+    set({
+      edges:get().edges.filter(edge=>{
+      if(edge.source===nodeId&&!validHandles.includes(edge.sourceHandle))return false
+      if(edge.target===nodeId&&!validHandles.includes(edge.targetHandle))return false
+      return true
+      })
+    })
+    },
     addNode: (node) => {
         set({
             nodes: [...get().nodes, node]
