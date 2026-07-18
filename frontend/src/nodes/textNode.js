@@ -16,9 +16,11 @@ export const TextNode = ({ id, data }) => {
 useEffect(() => {
   if (textareaRef.current) {
     textareaRef.current.style.height = 'auto';
-    textareaRef.current.style.height = `${textareaRef.current.scrollHeight}px`;
+    const measured = textareaRef.current.scrollHeight;
+    const nextHeight = Math.min(600, Math.max(120, measured + 40));
 
-    const nextHeight = Math.min(600, Math.max(120, textareaRef.current.scrollHeight + 40));
+    textareaRef.current.style.height = `${nextHeight - 40}px`;
+    textareaRef.current.style.overflowY = measured + 40 > 600 ? 'auto' : 'hidden';
 
     setNodeSize({ width: 320, height: nextHeight });
   }
