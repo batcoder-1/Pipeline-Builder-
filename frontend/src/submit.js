@@ -17,7 +17,6 @@ const handleSubmit =async()=>{
   body: JSON.stringify({ nodes: nodes, edges: edges }),
 })
 const data=await response.json()
-console.log(data.num_edges)
 alert(`
     Node:${data.num_nodes}
     Edges:${data.num_edges}

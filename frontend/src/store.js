@@ -1,6 +1,6 @@
 // store.js
 
-import { create } from "zustand";
+import { createWithEqualityFn } from 'zustand/traditional';
 import {
     addEdge,
     applyNodeChanges,
@@ -8,7 +8,7 @@ import {
     MarkerType,
   } from 'reactflow';
 
-export const useStore = create((set, get) => ({
+export const useStore = createWithEqualityFn((set, get) => ({
     nodes: [],
     edges: [],
     getNodeID: (type) => {
@@ -23,7 +23,6 @@ export const useStore = create((set, get) => ({
     pruneEdges:(nodeId,validHandles)=>{
     set({
       edges:get().edges.filter(edge=>{
-      if(edge.source===nodeId&&!validHandles.includes(edge.sourceHandle))return false
       if(edge.target===nodeId&&!validHandles.includes(edge.targetHandle))return false
       return true
       })

@@ -49,8 +49,33 @@ code {
 }
 
 .pipeline-canvas-wrapper {
+  position: relative;
   width: 100vw;
   height: 70vh;
+}
+
+.pipeline-canvas-stats {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  z-index: 10;
+  display: flex;
+  gap: 10px;
+  padding: 10px 12px;
+  border: 1px solid #2f384b;
+  border-radius: 999px;
+  background: rgba(15, 17, 23, 0.82);
+  backdrop-filter: blur(10px);
+  color: #e8eaf0;
+  font-size: 13px;
+  font-weight: 600;
+  pointer-events: none;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.28);
+}
+
+.pipeline-canvas-stats span + span {
+  padding-left: 10px;
+  border-left: 1px solid #3a4258;
 }
 
 .base-node {

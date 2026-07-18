@@ -2,7 +2,7 @@
 // Displays the drag-and-drop UI
 // --------------------------------------------------
 
-import { useState, useRef, useCallback } from 'react';
+import { useState, useRef, useCallback, useMemo } from 'react';
 import ReactFlow, { Controls, Background, MiniMap } from 'reactflow';
 import { useStore } from './store';
 import { shallow } from 'zustand/shallow';
@@ -19,17 +19,6 @@ import 'reactflow/dist/style.css';
 
 const gridSize = 20;
 const proOptions = { hideAttribution: true };
-const nodeTypes = {
-  customInput: InputNode,
-  llm: LLMNode,
-  customOutput: OutputNode,
-  text: TextNode,
-  api:ApiNode,
-  parser:ParserNode,
-  condition:ConditionNode,
-  merge:MergeNode,
-  comment:CommentNode
-};
 
 export const selector = (state) => ({
   nodes: state.nodes,
@@ -53,6 +42,18 @@ export const PipelineUI = () => {
       onEdgesChange,
       onConnect
     } = useStore(selector, shallow);
+
+    const nodeTypes = useMemo(() => ({
+      customInput: InputNode,
+      llm: LLMNode,
+      customOutput: OutputNode,
+      text: TextNode,
+      api: ApiNode,
+      parser: ParserNode,
+      condition: ConditionNode,
+      merge: MergeNode,
+      comment: CommentNode,
+    }), []);
 
     const getInitNodeData = (nodeID, type) => {
       let nodeData = { id: nodeID, nodeType: `${type}` };
@@ -99,7 +100,11 @@ export const PipelineUI = () => {
 
     return (
         <>
-      <div ref={reactFlowWrapper} className="pipeline-canvas-wrapper" style={{width: '100wv', height: '70vh'}}>
+      <div ref={reactFlowWrapper} className="pipeline-canvas-wrapper" style={{width: '100vw', height: '70vh'}}>
+            <div className="pipeline-canvas-stats" aria-label="pipeline graph stats">
+              <span>Nodes {nodes.length}</span>
+              <span>Edges {edges.length}</span>
+            </div>
             <ReactFlow
                 nodes={nodes}
                 edges={edges}
