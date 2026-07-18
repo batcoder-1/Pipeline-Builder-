@@ -1,7 +1,7 @@
 // textNode.js
 
 import { useState,useRef,useEffect} from 'react';
-import {  Position } from 'reactflow';
+import {  Position, useUpdateNodeInternals } from 'reactflow';
 import { BaseNode } from './baseNode';
 import { useStore as useAppStore } from '../store';
 export const TextNode = ({ id, data }) => {
@@ -9,6 +9,7 @@ export const TextNode = ({ id, data }) => {
   const [nodeSize, setNodeSize] = useState({ width: 320, height: 140 });
   const textareaRef = useRef(null)
   const [variableHandle,setVariableHandle]=useState([])
+  const updateNodeInternals = useUpdateNodeInternals();
   const handleTextChange = (e) => {
     setCurrText(e.target.value);
   };
@@ -46,6 +47,11 @@ setVariableHandle(allHandles)
 const validHandles=allHandles.map(h=>`${id}-${h.id_suffix}`)
 useAppStore.getState().pruneEdges(id, validHandles)
 },[currText,id])
+
+useEffect(() => {
+  updateNodeInternals(id);
+}, [variableHandle, id, updateNodeInternals]);
+
   return (
     <BaseNode
     id={id}
@@ -66,7 +72,6 @@ useAppStore.getState().pruneEdges(id, validHandles)
          style={{
        width: '100%',
        display: 'block',
-       overflow: 'hidden',
        boxSizing: 'border-box',
        resize: 'none',
        whiteSpace: 'pre-wrap',
