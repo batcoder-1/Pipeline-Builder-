@@ -153,6 +153,25 @@ code {
   box-shadow: 0 0 0 2px color-mix(in srgb, var(--node-accent) 22%, transparent);
 }
 
+.text-node-body {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.text-node-body label {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.text-node-body textarea {
+  min-height: 100px;
+  line-height: 1.45;
+}
+
 .pipeline-submit-btn {
   margin: 16px 0;
   padding: 10px 18px;

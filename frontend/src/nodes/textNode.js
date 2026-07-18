@@ -6,25 +6,21 @@ import { BaseNode } from './baseNode';
 import { useStore as useAppStore } from '../store';
 export const TextNode = ({ id, data }) => {
   const [currText, setCurrText] = useState(data?.text || '{{input}}');
-  const [nodeSize, setNodeSize] = useState({ width: 200, height: 80 });
-  const textareaRef=useRef(null)
+  const [nodeSize, setNodeSize] = useState({ width: 320, height: 140 });
+  const textareaRef = useRef(null)
   const [variableHandle,setVariableHandle]=useState([])
   const handleTextChange = (e) => {
     setCurrText(e.target.value);
   };
 
 useEffect(() => {
-  const lines = currText.split('\n');
-  const longestLine = lines.reduce((max, line) => Math.max(max, line.length), 0);
-
-  const nextWidth = Math.min(500, Math.max(200, 160 + longestLine * 8));
-  const nextHeight = Math.min(400, Math.max(80, 44 + lines.length * 24));
-
-  setNodeSize({ width: nextWidth, height: nextHeight });
-
   if (textareaRef.current) {
     textareaRef.current.style.height = 'auto';
     textareaRef.current.style.height = `${textareaRef.current.scrollHeight}px`;
+
+    const nextHeight = Math.min(600, Math.max(120, textareaRef.current.scrollHeight + 40));
+
+    setNodeSize({ width: 320, height: nextHeight });
   }
 }, [currText]);
 useEffect(()=>{
@@ -56,7 +52,7 @@ useAppStore.getState().pruneEdges(id, validHandles)
     handles={variableHandle}
     style={nodeSize}
     >
-      <div>
+      <div className="text-node-body">
         <label>
           Text:
          <textarea
@@ -64,12 +60,15 @@ useAppStore.getState().pruneEdges(id, validHandles)
          value={currText}
          onChange={handleTextChange}
          placeholder="Enter text....."
-        style={{
+         rows={5}
+         style={{
        width: '100%',
-       height: '100%',
+       display: 'block',
        overflow: 'hidden',
        boxSizing: 'border-box',
        resize: 'none',
+       whiteSpace: 'pre-wrap',
+       overflowWrap: 'anywhere',
         }}
          />
         </label>
