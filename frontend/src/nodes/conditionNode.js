@@ -1,7 +1,6 @@
-import { useState } from "react";
 import { Position } from "reactflow";
 import { BaseNode } from "./baseNode";
-export const ConditionNode=(id,data)=>{
+export const ConditionNode=({ id, data })=>{
 return(
 <BaseNode
 id={id}

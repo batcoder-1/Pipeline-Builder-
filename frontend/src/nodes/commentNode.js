@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { BaseNode } from "./baseNode";
-export const CommentNode=(id,data)=>{
+export const CommentNode=({ id, data })=>{
     const [comment,setComment]=useState("")
     const handleCommentChange=(e)=>{
         setComment(e.target.value)

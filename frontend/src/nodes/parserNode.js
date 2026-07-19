@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { BaseNode } from "./baseNode";
 import { Position } from "reactflow";
-export const ParserNode=(id,data)=>{
+export const ParserNode=({ id, data })=>{
 const [outputFormat,setOutputFormat]=useState("text")
 
 const handleOutputFormatChange=(e)=>{

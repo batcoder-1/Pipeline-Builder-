@@ -1,6 +1,6 @@
 import { Position } from "reactflow";
 import { BaseNode } from "./baseNode";
-export const MergeNode=(id,data)=>{
+export const MergeNode=({ id, data })=>{
 return(
 <BaseNode
 id={id}
